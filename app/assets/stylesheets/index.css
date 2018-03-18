@@ -1,0 +1,29 @@
+.fa-instagram {
+  background: #125688;
+  color: white;
+  margin: 10px;
+}
+
+.fa {
+  padding: 20px;
+ 
+  width:40vw;
+  text-align: center;
+  text-decoration: none;
+ 
+ 
+}
+
+.fa-instagram:before {
+    margin: 10px;
+    content: "\f16d";
+
+
+}
+
+a.fa.fa-instagram{
+	position: relative;
+	 margin-top: 30vh;
+  margin-left: 30vw;
+	font-size: 50px;
+}

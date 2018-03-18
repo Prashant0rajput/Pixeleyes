@@ -18,11 +18,15 @@ class HomeController < ApplicationController
   	
   end
 
-protected
+
 
 def homepage
 
-	https://api.instagram.com/v1/users/{user-id}/media/recent/?access_token=ACCESS-TOKEN
+url =  "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{session[:access_token]}"
+res = RestClient.get url
+puts res.body
+
+redirect_to url
 
 
 end
