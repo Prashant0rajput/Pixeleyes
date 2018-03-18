@@ -3,6 +3,41 @@
 	<title>test</title>
 </head>
 <body>
-this worked
+	<div id='content'>
+	<div id='profile'></div>
+	<div id='imagediv'></div>
+	</div>
+
 </body>
+<script type="text/javascript">
+ $.ajax({
+  
+  url:"http://localhost:3000/homepage",
+  method:'GET',
+  dataType:"JSON",
+  
+  success:function(data){
+             // alert(data.data[0].images.standard_resolution.url);
+             
+             	for (var i = 0; i < data.data.length; i++) {
+             		data.data[i]
+             	
+             
+             var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+			 img.attr('src', data.data[i].images.standard_resolution.url);
+			 img.attr('class',"img-rounded");
+			 img.appendTo('#imagediv');
+
+			 
+
+             
+            }
+
+            var pro_img = $('<img id="profile">');
+			 pro_img.attr('src',data.data[0].user.profile_picture);
+			 pro_img.appendTo('#profile');
+        }
+  
+});
+</script>
 </html>

@@ -1,0 +1,18 @@
+#content{
+	display: flex;
+	flex-direction:row;
+	justify-content:space-around;
+}
+
+#imagediv{
+
+	display: flex;
+	flex-direction:column;
+	content: normal;
+	width: 40vw;
+}
+
+#dynamic{
+	width: inherit;
+	margin-bottom: 5px;
+}

@@ -21,9 +21,20 @@
 
 }
 
+
 a.fa.fa-instagram{
+	-webkit-box-shadow: 5px 8px 34px 0px rgba(0,0,0,0.72); 
+box-shadow: 5px 8px 34px 0px rgba(0,0,0,0.72);
+
 	position: relative;
 	 margin-top: 30vh;
   margin-left: 30vw;
 	font-size: 50px;
+}
+
+a.fa.fa-instagram:hover{
+	color: white;
+	-webkit-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.72); 
+box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.72);
+	text-decoration: none;
 }

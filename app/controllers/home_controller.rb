@@ -2,6 +2,14 @@ class HomeController < ApplicationController
   def index
   end
 
+  def logout
+
+    session.clear
+
+    redirect_to '/'
+    
+  end
+
   def callback
 
   	 response = Instagram.get_access_token(params[:code] ,:client_secret => 'c3db0dc33041429ca1efef091a1d4490', :client_id=>'238b5101f4fe40b1a3ab8de53d3d0b60', :redirect_uri => 'http://localhost:3000/callback')
@@ -22,11 +30,20 @@ class HomeController < ApplicationController
 
 def homepage
 
-url =  "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{session[:access_token]}"
-res = RestClient.get url
-puts res.body
+url =  "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{session[:access_token]}&count=4"
 
-redirect_to url
+res = JSON.parse(RestClient.get url)
+# puts res.to_s
+
+ # t = res.responseJSON.data
+
+ # puts t
+respond_to do |format|
+       format.html{}
+       format.json {render :json => res}
+
+
+  end
 
 
 end
