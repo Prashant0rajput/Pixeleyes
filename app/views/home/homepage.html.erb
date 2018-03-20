@@ -4,8 +4,11 @@
 </head>
 <body>
 	<div id='content'>
+  <div class='posts'>
+  <div id='imagediv'></div>
+  </div>
 	<div id='profile'></div>
-	<div id='imagediv'></div>
+	
 	</div>
 
 </body>
@@ -19,10 +22,9 @@
   success:function(data){
              // alert(data.data[0].images.standard_resolution.url);
              
-             	for (var i = 0; i < data.data.length; i++) {
+             	for (var i = 0; i < 4; i++) {
              		data.data[i]
              	
-             
              var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
 			 img.attr('src', data.data[i].images.standard_resolution.url);
 			 img.attr('class',"img-rounded");
@@ -35,8 +37,11 @@
 
             var pro_img = $('<img id="profile">');
 			 pro_img.attr('src',data.data[0].user.profile_picture);
+       pro_img.attr('class' , 'img-circle');
 			 pro_img.appendTo('#profile');
         }
+
+         
   
 });
 </script>

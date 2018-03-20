@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  get'/' => 'home#index'
+
+  # get '/auth/instagram/callback' => "home#create_user"
 
   get '/callback' => "home#callback"
 
