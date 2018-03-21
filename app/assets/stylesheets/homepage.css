@@ -22,6 +22,8 @@
 	min-height: inherit;
 	max-height: 300px;
 	display: flex;
+	top: 20px;
+	position: relative;
 	flex-direction:column;
 	justify-content:space-around;
 

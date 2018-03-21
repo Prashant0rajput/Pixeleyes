@@ -1,3 +1,4 @@
+
 .fa-instagram {
   background: #125688;
   color: white;
@@ -11,8 +12,8 @@
 .fa {
   padding: 20px;
   position: static;
- 
-  width:40vw;
+  /*margin: 0px auto;*/
+  width:inherit;
   text-align: center;
   text-decoration: none;
  
@@ -32,9 +33,10 @@ a.fa.fa-instagram{
 box-shadow: 5px 8px 34px 0px rgba(0,0,0,0.72);
 
 	position: relative;
-	 margin-top: 0vh;
-  margin-left: 30vw;
+	 margin-right: auto;
+  margin-left: auto;
 	font-size: 50px;
+  border-radius: 2px;
 }
 
 a.fa.fa-instagram:hover{
