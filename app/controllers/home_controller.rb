@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   	 response = Instagram.get_access_token(params[:code] ,:client_secret => 'c3db0dc33041429ca1efef091a1d4490', :client_id=>'238b5101f4fe40b1a3ab8de53d3d0b60', :redirect_uri => 'http://localhost:3000/callback')
      username = response.user.username
   session[:access_token] = response.access_token
-
+ 
   session[:user] = response.user.username
   session[:user_id] = response.user.id
 
@@ -58,24 +58,36 @@ class HomeController < ApplicationController
     
   end
 
-
+def stats
+  
+end
 
 def homepage
 
 
 
-url =  "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{session[:access_token]}"
+url_1 =  "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{session[:access_token]}"
 
-res = RestClient.get url
+@res_1 = RestClient.get url_1
+
+url_2 = "https://api.instagram.com/v1/users/self/followed-by?access_token=#{session[:access_token]}"
+
+@res_2 = RestClient.get url_2
+
+url_3 = "https://api.instagram.com/v1/users/self/follows?access_token=#{session[:access_token]}"
+
+@res_3 = RestClient.get url_3
 
 
 
 
+
+# :res_1 => res_1 , :res_2 => res_2
 
 respond_to do |format|
        format.html{}
-       format.json {render :json => res}
-
+       format.json {render :json => {:res_1 => @res_1 , :res_2 => @res_2}, :res_3 => @res_3}
+       
 
   end
 

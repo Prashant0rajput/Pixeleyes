@@ -4,8 +4,13 @@
   margin: 10px;
 }
 
+.slider{
+  margin-top: 10px;
+}
+
 .fa {
   padding: 20px;
+  position: static;
  
   width:40vw;
   text-align: center;
@@ -27,7 +32,7 @@ a.fa.fa-instagram{
 box-shadow: 5px 8px 34px 0px rgba(0,0,0,0.72);
 
 	position: relative;
-	 margin-top: 30vh;
+	 margin-top: 0vh;
   margin-left: 30vw;
 	font-size: 50px;
 }

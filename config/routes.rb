@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/callback' => "home#callback"
 
+  get '/stats' => "home#stats"
+
   get '/homepage' => "home#homepage"
 
   post '/logout' => "home#logout"

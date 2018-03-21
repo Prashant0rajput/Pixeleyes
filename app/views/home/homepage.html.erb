@@ -4,45 +4,149 @@
 </head>
 <body>
 	<div id='content'>
-  <div class='posts'>
+  <div id='posts'>
+    <h1>Recent Posts</h1>
+    
   <div id='imagediv'></div>
+  
   </div>
-	<div id='profile'></div>
+  <div id="stats">
+    <div id="follow_by"><h6>Followers</h6></div>
+    
+    <div id="following"><h6>Following</h6></div>
+
+  </div>
+
+	<div id='profile'><hr>
+    <h4 id="score">Score</h4>
+    <hr>
+    <div class="count">0</div></div>
 	
 	</div>
 
+
+
+
+
+
+
+  <%= javascript_tag do%>
+  window.data1 = <%= raw @res_1 %>
+  window.data2 = <%= raw @res_2 %>
+  window.data3 = <%= raw @res_3 %>
+<%end%>
+
 </body>
+
+
+
+
+
 <script type="text/javascript">
- $.ajax({
+ // $.ajax({
   
-  url:"http://localhost:3000/homepage",
-  method:'GET',
-  dataType:"JSON",
+ //  url:"http://localhost:3000/homepage",
+ //  method:'GET',
+ //  dataType:"JSON",
+
   
-  success:function(data){
+ //  success:function(data1){
+                
+
              // alert(data.data[0].images.standard_resolution.url);
+             var data = window.data1;
              
+             var num_of_posts = $('<h1></h1><hr noshade>');
+             num_of_posts.html(data.data.length);
+             // num_of_posts.prependTo('#posts');
+             no_of_posts = data.data.length;
+
+             var no_of_likes = 0;
+             var no_of_comments = 0;
+
+
+             for (var i = 0; i < data.data.length; i++) {
+               data.data[i]
+               no_of_likes = no_of_likes + data.data[i].likes.count;
+               no_of_comments = no_of_comments + data.data[i].comments.count;
+             };
+
+
+
+        var follower_stats = window.data2.data.length;
+          var follower = $('<h1></h1>');
+          follower.html(follower_stats);
+          follower.appendTo('#follow_by');
+
+        var follow_stats = window.data3.data.length;
+          var follower = $('<h1></h1>');
+          follower.html(follow_stats);
+          follower.appendTo('#following');
+
+
+
+             // console.log(no_of_likes , no_of_comments);
+             var avg_likes = Number(no_of_likes/no_of_posts);
+             var avg_comments = Number(no_of_comments/no_of_posts);
+             // console.log(avg_likes + avg_comments*1.2);
+             engagement_ratio = ((avg_likes + avg_comments*1.2)/(follower_stats))*100;
+             var er = parseInt(engagement_ratio);
+             console.log(er)
+             // er.appendTo('#profile');
+
+
+
              	for (var i = 0; i < 4; i++) {
-             		data.data[i]
+             		 data.data[i]
              	
+
+
              var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
-			 img.attr('src', data.data[i].images.standard_resolution.url);
-			 img.attr('class',"img-rounded");
-			 img.appendTo('#imagediv');
-
-			 
-
-             
+			       img.attr('src', data.data[i].images.thumbnail.url);
+			       img.attr('class',"img-rounded");
+			       img.appendTo('#imagediv');             
             }
 
             var pro_img = $('<img id="profile">');
 			 pro_img.attr('src',data.data[0].user.profile_picture);
        pro_img.attr('class' , 'img-circle');
-			 pro_img.appendTo('#profile');
-        }
+			  pro_img.prependTo('#profile');
+
+
+
+
+
+
+
+            function countUp(count)
+{
+  var div_by = 100,
+      speed = Math.round(count / div_by),
+      $display = $('.count'),
+
+      run_count = 1,
+      int_speed = 24;
+  
+  var int = setInterval(function() {
+    if(run_count < div_by){
+      $display.text(speed * run_count);
+      run_count++;
+    } else if(parseInt($display.text()) < count) {
+      var curr_count = parseInt($display.text()) + 1;
+      $display.text(curr_count);
+    } else {
+      clearInterval(int);
+    }
+  }, int_speed);
+}
+
+countUp(parseInt(er));
+
+        
+//          }
 
          
   
-});
+// });
 </script>
 </html>

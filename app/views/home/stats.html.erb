@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+</body>
+
+<script type="text/javascript">
+ $.ajax({
+  
+  url:"http://localhost:3000/stats",
+  method:'GET',
+  dataType:"JSON",
+  
+  success:function(data){
+             // alert(data.data[0].images.standard_resolution.url);
+             
+             	for (var i = 0; i < 4; i++) {
+             		data.data[i]
+             	
+             var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+			 img.attr('src', data.data[i].images.thumbnail.url);
+			 img.attr('class',"img-rounded");
+			 img.appendTo('#imagediv');
+
+			 
+
+             
+            }
+
+            var pro_img = $('<img id="profile">');
+			 pro_img.attr('src',data.data[0].user.profile_picture);
+       pro_img.attr('class' , 'img-circle');
+			 pro_img.appendTo('#profile');
+        }
+
+         
+  
+});
+</script>
+</html>

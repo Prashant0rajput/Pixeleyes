@@ -7,12 +7,44 @@
 #imagediv{
 
 	display: flex;
-	flex-direction:column;
+	flex-direction:row;
 	content: normal;
-	width: 45vw;
+	/*width: 45vw;*/
 }
 
 #dynamic{
 	width: inherit;
-	margin-bottom: 5px;
+	margin: 5px;
+
+}
+
+#profile{
+	min-height: inherit;
+	max-height: 300px;
+	display: flex;
+	flex-direction:column;
+	justify-content:space-around;
+
+}
+
+#score{
+	margin: 0px auto;
+}
+
+.count {
+  position: relative;
+  margin: 0px auto;
+  padding: 14px 16px;
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 600;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  +border-radius(4px);
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  
+  &.glow
+    +text-shadow(0 0 4px #ffffff)
+
 }
